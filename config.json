@@ -1,0 +1,23 @@
+{
+  "data_dir": "/data",
+  "ui_dir": "/ui",
+  "client_addr": "0.0.0.0",
+  "ports": {
+    "http"  : %%CONSUL_HTTP_PORT%%,
+    "https" : %%CONSUL_HTTPS_PORT%%,
+    "dns"   : %%CONSUL_DNS_PORT%%
+  },
+  "start_join":[
+    %%LIST_PODIPS%%
+  ],
+  "acl_default_policy": "deny",
+  "acl_datacenter": "%%ENVIRONMENT%%",
+  "acl_master_token": "%%MASTER_TOKEN%%",
+  "key_file" : "/etc/consul/ssl/consul.key",
+  "cert_file": "/etc/consul/ssl/consul.crt",
+  "recursor": "8.8.8.8",
+  "disable_update_check": true,
+  "encrypt" : "%%GOSSIP_KEY%%",
+  "log_level": "INFO",
+  "enable_syslog": false
+}
